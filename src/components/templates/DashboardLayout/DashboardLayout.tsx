@@ -12,8 +12,10 @@
  const DashboardLayout: React.FC = () => {
    const dispatch = useDispatch();
    const { sidebarOpen } = useSelector((state: RootState) => state.ui);
+ }
 +  
 +  // Initialize auth and handle token validation
 +  useAuth();
 
    return (
+   )

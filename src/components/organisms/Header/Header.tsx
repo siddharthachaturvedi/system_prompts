@@ -21,6 +21,7 @@
 
  const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
    const dispatch = useDispatch();
+ }
 -  const { user } = useSelector((state: RootState) => state.auth);
 +  const { user } = useAuth(); // Use the custom hook for better auth management
    const { notifications } = useSelector((state: RootState) => state.ui);
