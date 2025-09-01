@@ -50,18 +50,18 @@ const NotificationCenter: React.FC = () => {
         <Transition
           key={notification.id}
           show={true}
-          enter="transform ease-out duration-300 transition"
-          enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-          enterTo="translate-y-0 opacity-100 sm:translate-x-0"
-          leave="transition ease-in duration-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          enter="transform ease-out duration-500 transition"
+          enterFrom="translate-y-4 opacity-0 scale-95 sm:translate-y-0 sm:translate-x-4"
+          enterTo="translate-y-0 opacity-100 scale-100 sm:translate-x-0"
+          leave="transition ease-in duration-200"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95 translate-x-2"
         >
           <div
             className={cn(
-              'rounded-lg border p-4 shadow-lg',
+              'rounded-xl border p-4 shadow-strong backdrop-blur-sm',
               getNotificationColors(notification.type),
-              !notification.read && 'ring-2 ring-primary-500 ring-opacity-50'
+              !notification.read && 'ring-2 ring-primary-400 ring-opacity-60 shadow-glow'
             )}
           >
             <div className="flex items-start">

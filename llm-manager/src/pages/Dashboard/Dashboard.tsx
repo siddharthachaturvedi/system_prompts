@@ -64,13 +64,13 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-gradient-to-r from-white to-primary-50/30 rounded-2xl shadow-soft border border-gray-200 p-6 animate-fade-in">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
               Welcome back to {currentWorkspace?.name || 'LLM Manager'}
             </h1>
-            <p className="mt-1 text-gray-600">
+            <p className="mt-2 text-gray-600 text-lg">
               Currently using: <span className="font-medium">{activeProvider}</span>
               {activeModel && ` - ${activeModel}`}
             </p>
@@ -91,16 +91,16 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-slide-up">
         {stats.map((stat) => (
-          <div key={stat.name} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div key={stat.name} className="bg-white rounded-2xl shadow-soft border border-gray-200 p-6 hover:shadow-medium hover:-translate-y-1 transition-all duration-300 group">
             <div className="flex items-center">
-              <div className={`p-2 rounded-lg ${stat.bgColor}`}>
+              <div className={`p-3 rounded-xl ${stat.bgColor} group-hover:scale-110 transition-transform duration-200`}>
                 <stat.icon className={`h-6 w-6 ${stat.color}`} />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-2xl font-bold text-gray-900 group-hover:text-primary-700 transition-colors duration-200">{stat.value}</p>
               </div>
             </div>
           </div>
@@ -110,19 +110,19 @@ const Dashboard: React.FC = () => {
       {/* Recent Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Conversations */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-2xl shadow-soft border border-gray-200 p-6 hover:shadow-medium transition-all duration-300">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Recent Conversations</h2>
-            <Link to="/conversations" className="text-sm text-primary-600 hover:text-primary-700">
+            <Link to="/conversations" className="text-sm text-primary-600 hover:text-primary-700 font-medium hover:underline transition-all duration-200">
               View all
             </Link>
           </div>
           
           <div className="space-y-3">
             {conversationsData?.data.slice(0, 5).map((conversation) => (
-              <div key={conversation.id} className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={conversation.id} className="flex items-center justify-between p-3 rounded-xl hover:bg-primary-50 transition-all duration-200 hover:shadow-soft hover:translate-x-1 group">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-700 transition-colors duration-200">
                     {conversation.title}
                   </p>
                   <p className="text-xs text-gray-500">
@@ -131,7 +131,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 <Link
                   to={`/conversations/${conversation.id}`}
-                  className="text-sm text-primary-600 hover:text-primary-700"
+                  className="text-sm text-primary-600 hover:text-primary-700 font-medium hover:underline transition-all duration-200"
                 >
                   Continue
                 </Link>
@@ -145,19 +145,19 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Recent Prompts */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-2xl shadow-soft border border-gray-200 p-6 hover:shadow-medium transition-all duration-300">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Recent Prompts</h2>
-            <Link to="/prompts" className="text-sm text-primary-600 hover:text-primary-700">
+            <Link to="/prompts" className="text-sm text-primary-600 hover:text-primary-700 font-medium hover:underline transition-all duration-200">
               View all
             </Link>
           </div>
           
           <div className="space-y-3">
             {promptsData?.data.slice(0, 5).map((prompt) => (
-              <div key={prompt.id} className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={prompt.id} className="flex items-center justify-between p-3 rounded-xl hover:bg-primary-50 transition-all duration-200 hover:shadow-soft hover:translate-x-1 group">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-gray-900 truncate group-hover:text-primary-700 transition-colors duration-200">
                     {prompt.title}
                   </p>
                   <div className="flex items-center space-x-2 mt-1">
@@ -167,7 +167,7 @@ const Dashboard: React.FC = () => {
                     {prompt.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800"
+                        className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200"
                       >
                         {tag}
                       </span>
@@ -176,7 +176,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 <Link
                   to={`/prompts/${prompt.id}`}
-                  className="text-sm text-primary-600 hover:text-primary-700"
+                  className="text-sm text-primary-600 hover:text-primary-700 font-medium hover:underline transition-all duration-200"
                 >
                   Edit
                 </Link>
@@ -191,40 +191,40 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-2xl shadow-soft border border-gray-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
             to="/conversations"
-            className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all group"
+            className="interactive-card group"
           >
-            <ChatBubbleLeftRightIcon className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-2" />
-            <h3 className="font-medium text-gray-900">Start Conversation</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <ChatBubbleLeftRightIcon className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-3 group-hover:scale-110 transition-all duration-200" />
+            <h3 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors duration-200">Start Conversation</h3>
+            <p className="text-sm text-gray-600 mt-2 group-hover:text-gray-700 transition-colors duration-200">
               Begin a new chat with your selected LLM
             </p>
           </Link>
           
           <Link
             to="/prompts/new"
-            className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all group"
+            className="interactive-card group"
           >
-            <DocumentTextIcon className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-2" />
-            <h3 className="font-medium text-gray-900">Create Prompt</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <DocumentTextIcon className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-3 group-hover:scale-110 transition-all duration-200" />
+            <h3 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors duration-200">Create Prompt</h3>
+            <p className="text-sm text-gray-600 mt-2 group-hover:text-gray-700 transition-colors duration-200">
               Design and save reusable prompts
             </p>
           </Link>
           
           <Link
             to="/batch"
-            className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:bg-primary-50 transition-all group"
+            className="interactive-card group"
           >
-            <svg className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="h-8 w-8 text-gray-400 group-hover:text-primary-600 mb-3 group-hover:scale-110 transition-all duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14-7H5m14 14H5" />
             </svg>
-            <h3 className="font-medium text-gray-900">Batch Process</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <h3 className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors duration-200">Batch Process</h3>
+            <p className="text-sm text-gray-600 mt-2 group-hover:text-gray-700 transition-colors duration-200">
               Process multiple inputs at once
             </p>
           </Link>

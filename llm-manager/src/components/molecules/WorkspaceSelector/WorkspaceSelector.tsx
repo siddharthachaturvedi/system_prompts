@@ -30,7 +30,7 @@ const WorkspaceSelector: React.FC = () => {
   return (
     <Listbox value={currentWorkspace?.id} onChange={handleWorkspaceChange}>
       <div className="relative">
-        <Listbox.Button className="relative w-48 cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500">
+        <Listbox.Button className="relative w-48 cursor-pointer rounded-xl bg-white py-2.5 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:border-primary-300 hover:shadow-soft transition-all duration-200">
           <span className="flex items-center">
             <BuildingOfficeIcon className="h-4 w-4 text-gray-400 mr-2" />
             <span className="block truncate font-medium">
@@ -47,14 +47,14 @@ const WorkspaceSelector: React.FC = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 shadow-lg border border-gray-200 focus:outline-none">
+          <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 shadow-strong border border-gray-200 focus:outline-none animate-scale-in">
             {workspaces.map((workspace) => (
               <Listbox.Option
                 key={workspace.id}
                 value={workspace.id}
                 className={({ active }) =>
                   cn(
-                    'relative cursor-pointer select-none py-2 pl-3 pr-9',
+                    'relative cursor-pointer select-none py-2.5 pl-3 pr-9 transition-colors duration-150',
                     active ? 'bg-primary-100 text-primary-900' : 'text-gray-900'
                   )
                 }
@@ -83,7 +83,7 @@ const WorkspaceSelector: React.FC = () => {
             
             {/* Add new workspace option */}
             <div className="border-t border-gray-100 mt-1 pt-1">
-              <button className="w-full text-left px-3 py-2 text-sm text-primary-600 hover:bg-primary-50 transition-colors">
+              <button className="w-full text-left px-3 py-2.5 text-sm text-primary-600 hover:bg-primary-50 transition-colors duration-150 font-medium">
                 + Create New Workspace
               </button>
             </div>

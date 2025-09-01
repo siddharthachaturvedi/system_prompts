@@ -60,13 +60,16 @@ const Sidebar: React.FC = () => {
               key={item.name}
               to={item.href}
               className={cn(
-                'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200',
+                'flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group',
                 isActive
-                  ? 'bg-primary-100 text-primary-700'
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  ? 'bg-primary-100 text-primary-700 shadow-soft'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:shadow-soft hover:translate-x-1'
               )}
             >
-              <item.icon className="h-5 w-5 flex-shrink-0" />
+              <item.icon className={cn(
+                "h-5 w-5 flex-shrink-0 transition-transform duration-200",
+                isActive ? "text-primary-600" : "group-hover:scale-110"
+              )} />
               {sidebarOpen && (
                 <span className="ml-3">{item.name}</span>
               )}

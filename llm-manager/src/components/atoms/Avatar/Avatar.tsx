@@ -38,7 +38,7 @@ const Avatar: React.FC<AvatarProps> = ({
         src={src}
         alt={alt || name || 'Avatar'}
         className={cn(
-          'rounded-full object-cover',
+          'rounded-full object-cover ring-2 ring-white shadow-soft',
           sizeClasses[size],
           className
         )}
@@ -49,7 +49,7 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <div
       className={cn(
-        'rounded-full bg-primary-500 text-white font-medium flex items-center justify-center',
+        'rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white font-medium flex items-center justify-center ring-2 ring-white shadow-soft',
         sizeClasses[size],
         className
       )}

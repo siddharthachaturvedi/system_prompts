@@ -43,7 +43,7 @@ const LLMSelector: React.FC = () => {
       {/* Provider Selector */}
       <Listbox value={activeProvider} onChange={handleProviderChange}>
         <div className="relative">
-          <Listbox.Button className="relative w-40 cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <Listbox.Button className="relative w-40 cursor-pointer rounded-xl bg-white py-2.5 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:border-primary-300 hover:shadow-soft transition-all duration-200">
             <span className="flex items-center">
               {currentProvider && (
                 <>
@@ -70,14 +70,14 @@ const LLMSelector: React.FC = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 shadow-lg border border-gray-200 focus:outline-none">
+            <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 shadow-strong border border-gray-200 focus:outline-none animate-scale-in">
               {providers.map((provider) => (
                 <Listbox.Option
                   key={provider.id}
                   value={provider.id}
                   className={({ active }) =>
                     cn(
-                      'relative cursor-pointer select-none py-2 pl-3 pr-9',
+                      'relative cursor-pointer select-none py-2.5 pl-3 pr-9 transition-colors duration-150',
                       active ? 'bg-primary-100 text-primary-900' : 'text-gray-900'
                     )
                   }
@@ -114,7 +114,7 @@ const LLMSelector: React.FC = () => {
       {currentProvider && (
         <Listbox value={activeModel} onChange={handleModelChange}>
           <div className="relative">
-            <Listbox.Button className="relative w-36 cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <Listbox.Button className="relative w-36 cursor-pointer rounded-xl bg-white py-2.5 pl-3 pr-10 text-left border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:border-primary-300 hover:shadow-soft transition-all duration-200">
               <span className="block truncate font-medium">
                 {currentModel?.displayName || 'Select Model'}
               </span>
@@ -128,14 +128,14 @@ const LLMSelector: React.FC = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg bg-white py-1 shadow-lg border border-gray-200 focus:outline-none">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 shadow-strong border border-gray-200 focus:outline-none animate-scale-in">
                 {currentProvider.models.map((model) => (
                   <Listbox.Option
                     key={model.id}
                     value={model.id}
                     className={({ active }) =>
                       cn(
-                        'relative cursor-pointer select-none py-2 pl-3 pr-9',
+                        'relative cursor-pointer select-none py-2.5 pl-3 pr-9 transition-colors duration-150',
                         active ? 'bg-primary-100 text-primary-900' : 'text-gray-900'
                       )
                     }

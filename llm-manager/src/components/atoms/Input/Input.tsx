@@ -29,13 +29,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={cn(
-              'w-full px-3 py-2 border rounded-lg transition-all duration-200',
-              'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent',
+              'w-full px-3 py-2.5 border rounded-xl transition-all duration-200',
+              'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:shadow-glow',
               'placeholder-gray-400',
+              'hover:border-gray-400 hover:shadow-soft',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               error
-                ? 'border-red-300 focus:ring-red-500'
+                ? 'border-red-300 focus:ring-red-500 focus:shadow-none'
                 : 'border-gray-300 hover:border-gray-400',
               className
             )}

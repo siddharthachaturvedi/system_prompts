@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 px-6 py-4 sticky top-0 z-40">
       <div className="flex items-center justify-between">
         {/* Left side */}
         <div className="flex items-center space-x-4">
@@ -53,10 +53,10 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
         {/* Right side */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+          <button className="relative p-2 text-gray-400 hover:text-gray-600 transition-all duration-200 hover:bg-gray-100 rounded-xl hover:scale-110">
             <BellIcon className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-bounce-subtle shadow-soft">
                 {unreadCount > 9 ? '9+' : unreadCount}
               </span>
             )}
@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
 
           {/* User menu */}
           <Menu as="div" className="relative">
-            <Menu.Button className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <Menu.Button className="flex items-center space-x-2 p-2 rounded-xl hover:bg-gray-100 transition-all duration-200 hover:shadow-soft">
               <Avatar
                 src={user?.avatar}
                 name={user?.name}
@@ -86,15 +86,15 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 focus:outline-none z-50">
+              <Menu.Items className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-strong border border-gray-200 focus:outline-none z-50 animate-scale-in">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
                       <a
                         href="/settings/profile"
                         className={`${
-                          active ? 'bg-gray-100' : ''
-                        } block px-4 py-2 text-sm text-gray-700`}
+                          active ? 'bg-primary-50 text-primary-700' : ''
+                        } block px-4 py-2.5 text-sm text-gray-700 transition-colors duration-150 first:rounded-t-xl`}
                       >
                         Profile Settings
                       </a>
@@ -105,8 +105,8 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                       <a
                         href="/settings/preferences"
                         className={`${
-                          active ? 'bg-gray-100' : ''
-                        } block px-4 py-2 text-sm text-gray-700`}
+                          active ? 'bg-primary-50 text-primary-700' : ''
+                        } block px-4 py-2.5 text-sm text-gray-700 transition-colors duration-150`}
                       >
                         Preferences
                       </a>
@@ -118,8 +118,8 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                       <button
                         onClick={handleLogout}
                         className={`${
-                          active ? 'bg-gray-100' : ''
-                        } block w-full text-left px-4 py-2 text-sm text-gray-700`}
+                          active ? 'bg-red-50 text-red-700' : ''
+                        } block w-full text-left px-4 py-2.5 text-sm text-gray-700 transition-colors duration-150 last:rounded-b-xl`}
                       >
                         Sign out
                       </button>
